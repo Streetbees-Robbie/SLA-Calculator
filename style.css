@@ -69,3 +69,8 @@ button:hover {
     border-radius: 5px;
     border: 2px solid #ffd700;
 }
+
+select[multiple] {
+    height: auto;
+    background-color: #fff3cd;
+}
