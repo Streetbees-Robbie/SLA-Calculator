@@ -10,33 +10,25 @@ const difficultyMultipliers = {
     "Standard (Hard)": 1.5
 };
 
-// Values based on sample per market ranges
+const collectionSliderValues = {
+    100: 10, 200: 11, 300: 13, 400: 15, 500: 17, 750: 18, 1000: 19
+};
+
 function getCollectionTPS(sampleValue) {
-    if (sampleValue < 100) {
-        return "N/A";
-    } else if (sampleValue < 200) {
-        return 10;
-    } else if (sampleValue < 300) {
-        return 11;
-    } else if (sampleValue < 400) {
-        return 13;
-    } else if (sampleValue < 500) {
-        return 15;
-    } else if (sampleValue < 750) {
-        return 17;
-    } else if (sampleValue < 1000) {
-        return 18;
-    } else if (sampleValue <= 1500) {
-        return 19;
-    } else {
-        return "Consult Ops";
-    }
+    if (sampleValue < 100) return "N/A";
+    if (sampleValue < 200) return 10;
+    if (sampleValue < 300) return 11;
+    if (sampleValue < 400) return 13;
+    if (sampleValue < 500) return 15;
+    if (sampleValue < 750) return 17;
+    if (sampleValue < 1000) return 18;
+    if (sampleValue <= 1500) return 19;
+    return "Consult Ops";
 }
 
 document.getElementById('sample_per_market').addEventListener('input', function() {
     const sampleValue = parseInt(this.value) || 0;
     const tpsValue = getCollectionTPS(sampleValue);
-    
     document.getElementById('collection_tps').value = tpsValue;
 });
 
@@ -61,12 +53,10 @@ function calculateSLA() {
     const finalSLATime = (staticTime + totalSurveyTime + additionalDashboardTime) * multiplier;
 
     const totalMinutes = finalSLATime;
-    const workDayMinutes = 9 * 60; // 9 hours per workday
+    const dailyMinutes = 24 * 60; // 1440 minutes per full day
 
-    // Convert total minutes to working days
-    let workingDays = Math.ceil(totalMinutes / workDayMinutes);
-    const weeks = Math.floor(workingDays / 5);
-    workingDays += (weeks * 2); // Add weekend days for each full week
+    // Convert total minutes to full days, rounded up
+    const fullDays = Math.ceil(totalMinutes / dailyMinutes);
 
-    document.getElementById('result').innerText = `SLA Time: ${workingDays} working days`;
+    document.getElementById('result').innerText = `SLA Time: ${fullDays} days`;
 }
