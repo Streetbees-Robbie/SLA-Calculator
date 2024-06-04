@@ -10,20 +10,20 @@ const difficultyMultipliers = {
     "Standard (Hard)": 1.5
 };
 
-const collectionSliderValues = {
-    100: 10, 200: 11, 300: 13, 400: 15, 500: 17, 750: 18, 1000: 19
-};
+const collectionTPSRanges = [
+    { min: 0, max: 99, value: "N/A" },
+    { min: 100, max: 199, value: 10 },
+    { min: 200, max: 299, value: 11 },
+    { min: 300, max: 399, value: 13 },
+    { min: 400, max: 499, value: 15 },
+    { min: 500, max: 749, value: 17 },
+    { min: 750, max: 999, value: 18 },
+    { min: 1000, max: 1500, value: 19 },
+    { min: 1501, max: Infinity, value: "Consult Ops" }
+];
 
 function getCollectionTPS(sampleValue) {
-    if (sampleValue < 100) return "N/A";
-    if (sampleValue < 200) return 10;
-    if (sampleValue < 300) return 11;
-    if (sampleValue < 400) return 13;
-    if (sampleValue < 500) return 15;
-    if (sampleValue < 750) return 17;
-    if (sampleValue < 1000) return 18;
-    if (sampleValue <= 1500) return 19;
-    return "Consult Ops";
+    return collectionTPSRanges.find(range => sampleValue >= range.min && sampleValue <= range.max).value;
 }
 
 document.getElementById('sample_per_market').addEventListener('input', function() {
