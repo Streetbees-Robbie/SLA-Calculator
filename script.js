@@ -34,7 +34,7 @@ document.getElementById('sample_per_market').addEventListener('input', function(
 
 function calculateSLA() {
     const samplePerMarket = parseFloat(document.getElementById('sample_per_market').value) || 0;
-    const numberOfMarkets = parseFloat(document.getElementById('number_of_markets').value) || 0;
+    const numberOfMarkets = 1;  // Each country is treated as one market
     const numberOfDashboards = parseInt(document.getElementById('number_of_dashboards').value) || 0;
     const difficulty = document.getElementById('difficulty').value;
     const collectionTPS = document.getElementById('collection_tps').value;
