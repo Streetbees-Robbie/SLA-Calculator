@@ -1,45 +1,45 @@
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>SLA Calculator</title>
-       <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-       <div class="container">
-           <h1>SLA Calculator</h1>
-           <form id="sla-form">
-               <label for="sample_per_market">Sample per Market:</label>
-               <input type="number" id="sample_per_market" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLA Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SLA Calculator</h1>
+        <form id="sla-form">
+            <label for="sample_per_market">Sample per Market:</label>
+            <input type="number" id="sample_per_market" required>
 
-               <label for="number_of_markets">Number of Markets:</label>
-               <input type="number" id="number_of_markets" required>
-   
-               <label for="number_of_dashboards">Number of Dashboards:</label>
-               <input type="number" id="number_of_dashboards" required>
-   
-               <label for="difficulty">Difficulty:</label>
-               <select id="difficulty" required>
-                   <option value="ITM & Media (Easy)">ITM & Media (Easy)</option>
-                   <option value="ITM & Media (Medium)">ITM & Media (Medium)</option>
-                   <option value="ITM & Media (Hard)">ITM & Media (Hard)</option>
-                   <option value="Media (Easy)">Media (Easy)</option>
-                   <option value="Media (Medium)">Media (Medium)</option>
-                   <option value="Media (Hard)">Media (Hard)</option>
-                   <option value="Standard (Easy)">Standard (Easy)</option>
-                   <option value="Standard (Medium)">Standard (Medium)</option>
-                   <option value="Standard (Hard)">Standard (Hard)</option>
-               </select>
+            <label for="number_of_markets">Number of Markets:</label>
+            <input type="number" id="number_of_markets" required>
 
-               <label for="collection_tps">Collection TPS:</label>
-               <input type="range" id="collection_tps" min="100" max="1000" step="100" value="100">
-               <span id="tps_value">10</span> minutes
+            <label for="number_of_dashboards">Number of Dashboards:</label>
+            <input type="number" id="number_of_dashboards" required>
 
-               <button type="button" onclick="calculateSLA()">Calculate SLA</button>
-           </form>
-           <div id="result">SLA Time: </div>
-       </div>
-       <script src="script.js"></script>
-   </body>
-   </html>
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty" required>
+                <option value="ITM & Media (Easy)">ITM & Media (Easy)</option>
+                <option value="ITM & Media (Medium)">ITM & Media (Medium)</option>
+                <option value="ITM & Media (Hard)">ITM & Media (Hard)</option>
+                <option value="Media (Easy)">Media (Easy)</option>
+                <option value="Media (Medium)">Media (Medium)</option>
+                <option value="Media (Hard)">Media (Hard)</option>
+                <option value="Standard (Easy)">Standard (Easy)</option>
+                <option value="Standard (Medium)">Standard (Medium)</option>
+                <option value="Standard (Hard)">Standard (Hard)</option>
+            </select>
+
+            <label for="collection_tps">Collection TPS:</label>
+            <input type="range" id="collection_tps" min="100" max="1000" step="100" value="100">
+            <span id="tps_value">10</span> minutes
+
+            <button type="button" onclick="calculateSLA()">Calculate SLA</button>
+        </form>
+        <div id="result">SLA Time: </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
