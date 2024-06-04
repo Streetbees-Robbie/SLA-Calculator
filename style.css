@@ -71,6 +71,14 @@ button:hover {
 }
 
 select[multiple] {
-    height: auto;
+    height: 150px;
     background-color: #fff3cd;
+}
+
+#selected-countries {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #fffbe0;
+    border: 2px solid #ffd700;
+    border-radius: 5px;
 }
