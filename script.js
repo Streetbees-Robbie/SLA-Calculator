@@ -32,6 +32,13 @@ document.getElementById('sample_per_market').addEventListener('input', function(
     document.getElementById('collection_tps').value = tpsValue;
 });
 
+function updateSelectedCountries() {
+    const selectedCountries = Array.from(document.getElementById('countries').selectedOptions)
+        .map(option => option.text)
+        .join(', ');
+    document.getElementById('selected-countries').innerText = `Selected Countries: ${selectedCountries}`;
+}
+
 function calculateSLA() {
     const samplePerMarket = parseFloat(document.getElementById('sample_per_market').value) || 0;
     const numberOfDashboards = parseInt(document.getElementById('number_of_dashboards').value) || 0;
