@@ -47,9 +47,9 @@ function calculateSLA() {
     const tpsValue = parseInt(collectionTPS);
 
     const staticTime = 1020.0;
-    const totalSurveyTime = samplePerMarket * tpsValue;
-    const additionalDashboardTime = numberOfDashboards > 2 ? 840.0 : 0.0;
-    const finalSLATime = (staticTime + totalSurveyTime + additionalDashboardTime) * multiplier;
+    const surveyTime = samplePerMarket * tpsValue * multiplier;
+    const dashboardTime = numberOfDashboards * 840.0;
+    const finalSLATime = staticTime + surveyTime + dashboardTime;
 
     const totalMinutes = finalSLATime;
     const dailyMinutes = 24 * 60; // 1440 minutes per full day
