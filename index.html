@@ -33,9 +33,8 @@
             </select>
 
             <label for="collection_tps">Collection TPS:</label>
-            <input type="range" id="collection_tps" min="100" max="1000" step="100" value="100">
-            <span id="tps_value">10</span> minutes
-
+            <input type="number" id="collection_tps" value="10" readonly>
+            
             <button type="button" onclick="calculateSLA()">Calculate SLA</button>
         </form>
         <div id="result">SLA Time: </div>
