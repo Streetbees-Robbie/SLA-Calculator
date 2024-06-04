@@ -34,7 +34,6 @@ document.getElementById('sample_per_market').addEventListener('input', function(
 
 function calculateSLA() {
     const samplePerMarket = parseFloat(document.getElementById('sample_per_market').value) || 0;
-    const numberOfMarkets = 1;  // Each country is treated as one market
     const numberOfDashboards = parseInt(document.getElementById('number_of_dashboards').value) || 0;
     const difficulty = document.getElementById('difficulty').value;
     const collectionTPS = document.getElementById('collection_tps').value;
@@ -48,7 +47,7 @@ function calculateSLA() {
     const tpsValue = parseInt(collectionTPS);
 
     const staticTime = 1020.0;
-    const totalSurveyTime = samplePerMarket * numberOfMarkets * tpsValue;
+    const totalSurveyTime = samplePerMarket * tpsValue;
     const additionalDashboardTime = numberOfDashboards > 2 ? 840.0 : 0.0;
     const finalSLATime = (staticTime + totalSurveyTime + additionalDashboardTime) * multiplier;
 
