@@ -15,19 +15,14 @@ const collectionSliderValues = {
 };
 
 document.getElementById('sample_per_market').addEventListener('input', function() {
-    const sample_value = parseFloat(this.value) || 0;
-    let tps_value = 100;
+    const sample_value = parseInt(this.value) || 0;
+    let tps_value = 10; // Default value
     for (let [key, value] of Object.entries(collectionSliderValues)) {
         if (sample_value >= key) {
-            tps_value = key;
+            tps_value = value;
         }
     }
     document.getElementById('collection_tps').value = tps_value;
-    document.getElementById('tps_value').innerText = collectionSliderValues[tps_value];
-});
-
-document.getElementById('collection_tps').addEventListener('input', function() {
-    document.getElementById('tps_value').innerText = collectionSliderValues[this.value];
 });
 
 function calculateSLA() {
@@ -35,19 +30,17 @@ function calculateSLA() {
     const numberOfMarkets = parseFloat(document.getElementById('number_of_markets').value) || 0;
     const numberOfDashboards = parseInt(document.getElementById('number_of_dashboards').value) || 0;
     const difficulty = document.getElementById('difficulty').value;
-    const collection_tps = parseInt(document.getElementById('collection_tps').value) || 100;
+    const collection_tps = parseInt(document.getElementById('collection_tps').value) || 10;
 
     const multiplier = difficultyMultipliers[difficulty];
-    const tpsValue = collectionSliderValues[collection_tps];
 
     const staticTime = 1020.0;
-    const totalSurveyTime = samplePerMarket * numberOfMarkets * tpsValue;
+    const totalSurveyTime = samplePerMarket * numberOfMarkets * collection_tps;
     const additionalDashboardTime = numberOfDashboards > 2 ? 840.0 : 0.0;
     const finalSLATime = (staticTime + totalSurveyTime + additionalDashboardTime) * multiplier;
 
     const totalMinutes = finalSLATime;
     const workDayMinutes = 9 * 60; // 9 hours per workday
-    const workWeekMinutes = 5 * workDayMinutes; // 5 workdays per week
 
     // Convert total minutes to working days
     let workingDays = Math.ceil(totalMinutes / workDayMinutes);
